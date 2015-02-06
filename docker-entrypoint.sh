@@ -7,6 +7,7 @@ if [ "$1" = 'sshserver' ]; then
   cp /root/id.pub /root/.ssh/authorized_keys
 
   # RUN sshd
+  echo "* started sshd"
   exec /usr/sbin/sshd -D
 fi
 exec "$@"
