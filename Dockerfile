@@ -1,8 +1,8 @@
-FROM ubuntu:14.04
+FROM alpine:3.1
 MAINTAINER Yves Serrano <y@yas.ch>
 
-RUN apt-get update -yq && apt-get install -yq openssh-server && \
-    apt-get clean && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
+RUN apk add --update openssh && \
+    rm -rf /var/cache/apk/*
 ADD docker-entrypoint.sh /entrypoint.sh
 ENTRYPOINT ["/entrypoint.sh"]
 CMD ["sshserver"]
